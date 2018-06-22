@@ -12,7 +12,7 @@ install: true
 
 before_script:
   - sleep 15
-  - psql -c 'create database travis_ci_test;' -U postgres -P password
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
   - ./mvnw clean verify -P travis
