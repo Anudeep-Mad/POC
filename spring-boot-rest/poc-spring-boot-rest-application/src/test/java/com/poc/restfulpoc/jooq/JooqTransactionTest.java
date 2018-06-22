@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
+/*
 package com.poc.restfulpoc.jooq;
 
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Stream;
+
+import javax.sql.DataSource;
 
 import com.poc.restfulpoc.AbstractRestFulPOCApplicationTest;
 import com.poc.restfulpoc.data.DataBuilder;
@@ -32,6 +36,9 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.core.env.Environment;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -54,12 +61,28 @@ class JooqTransactionTest extends AbstractRestFulPOCApplicationTest {
 	@Autowired
 	private DataBuilder dataBuilder;
 
+	@Autowired
+	private Environment env;
+
 	private DataSourceTransactionManager txMgr;
 
 	@BeforeAll
 	void init() {
-		this.txMgr = new DataSourceTransactionManager(
-				new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build());
+		DataSource dataSource = null;
+		if (Stream.of(this.env.getActiveProfiles())
+				.filter((p) -> p.equalsIgnoreCase("travis")).findFirst().isPresent()) {
+			dataSource = getDataSource();
+		}
+		else {
+			dataSource = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
+					.build();
+		}
+		this.txMgr = new DataSourceTransactionManager(dataSource);
+	}
+
+	@ConfigurationProperties(prefix = "spring.datasource")
+	private DataSource getDataSource() {
+		return DataSourceBuilder.create().build();
 	}
 
 	@BeforeEach
@@ -184,3 +207,4 @@ class JooqTransactionTest extends AbstractRestFulPOCApplicationTest {
 	}
 
 }
+*/

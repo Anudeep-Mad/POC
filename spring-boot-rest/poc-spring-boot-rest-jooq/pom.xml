@@ -125,11 +125,7 @@
 						<configuration>
 							<configLocation>${main.basedir}/config/checkstyle.xml</configLocation>
 							<suppressionsLocation>${main.basedir}/config/checkstyle-suppressions.xml</suppressionsLocation>
-							<encoding>UTF-8</encoding>
-							<consoleOutput>true</consoleOutput>
-							<failsOnError>false</failsOnError>
 							<failOnViolation>false</failOnViolation>
-							<includeTestSourceDirectory>true</includeTestSourceDirectory>
 						</configuration>
 						<goals>
 							<goal>check</goal>

@@ -16,8 +16,6 @@
 
 package com.poc.mongodbredisintegration.repository;
 
-import java.util.Optional;
-
 import com.poc.mongodbredisintegration.document.Book;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -41,15 +39,6 @@ public interface BookRepository extends MongoRepository<Book, String> {
 	 * @return a {@link com.poc.mongodbredisintegration.document.Book} object.
 	 */
 	Book findByTitle(String title);
-
-	/**
-	 * <p>
-	 * findById.
-	 * </p>
-	 * @param id a {@link java.lang.String} object.
-	 * @return a {@link java.util.Optional} object.
-	 */
-	Optional<Book> findById(String id);
 
 	/**
 	 * <p>

@@ -6,10 +6,16 @@ jdk:
 services:
   - mongodb
   - redis
+  - postgresql
+  
 install: true
 
+before_script:
+  - sleep 15
+  - psql -c 'create database travis_ci_test;' -U postgres -P password
+
 script:
-  - ./mvnw clean verify
+  - ./mvnw clean verify -P travis
 cache:
   directories:
     - '$HOME/.m2/repository'

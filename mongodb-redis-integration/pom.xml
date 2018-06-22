@@ -112,4 +112,9 @@
 		<!-- end::tests[] -->
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>travis</id>
+		</profile>
+	</profiles>
 </project>

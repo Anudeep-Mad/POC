@@ -9,6 +9,9 @@ logging:
       poc:
         restfulpoc: debug
 spring:
+  profiles:
+    active:
+    - '@activatedProperties@'
   activemq:
     in-memory: true
   ## Flyway database Configuration

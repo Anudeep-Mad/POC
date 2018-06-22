@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+/*
 package com.poc.restfulpoc.jooq;
 
 import java.sql.ResultSet;
@@ -148,3 +149,4 @@ class JooqQueryTest extends AbstractRestFulPOCApplicationTest {
 	}
 
 }
+*/
