@@ -10,6 +10,13 @@ services:
   
 install: true
 
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+
 before_script:
   - sleep 15
   - psql -c 'create database travis_ci_test;' -U postgres
